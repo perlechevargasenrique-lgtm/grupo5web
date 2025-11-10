@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="" type="image/jpg">
+    <title>RadarAbierto</title>
+    <link rel="stylesheet" href="Css/style.css">
+</head>
+
+<body>
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div class="header-contenedor1">
+            <div class="buscador-header">
+                <input type="text" id="buscar" placeholder="Buscar noticias...">
+                <div id="resultados"></div>
+            </div>
+        </div>
+
+        <div class="header-contenedor2">
+            <a href="index.html"><img class="imglo" src="Image/radar blanco.png" alt="Logo Noticias CHANTA"></a>
+        </div>
+    </header>
+
+    <!-- ===== NAV ===== -->
+    <nav class="barra-navegacion">
+        <ul>
+            <li><a href="index.html">Noticias</a></li>
+            <li><a href="#">Nacional</a></li>
+            <li><a href="#">Economía</a></li>
+            <li><a href="#">Ciencia</a></li>
+            <li><a href="#">Salud</a></li>
+            <li><a href="#">Cultura</a></li>
+            <li><a href="#">Tecnología</a></li>
+        </ul>
+    </nav>
+
+    <!-- ===== CABECERA CON IMAGEN ANIMADA ===== -->
+    <section class="cabecera-animada">
+        <img class="logouni" id="imagen-cabecera" src="Image/CABECERA.png" alt="Cabecera principal">
+    </section>
+
+    <!-- ===== NOTICIA PRINCIPAL ===== -->
+    <section class="noticia-principal">
+        <img src="Image/AURORIA INFORME 1.png" alt="Auroria en Sequía">
+        <div class="contenido">
+            <h1><a href="articulo.html">Auroria en Sequía: Anatomía de una crisis</a></h1>
+            <p>
+                Auroria, país andino de ingresos medios y biodiversidad notable, vivía del turismo y la minería.
+                La sequía prolongada, agravada por el cambio climático, vació represas, encareció la energía
+                y golpeó al agro. Con menos agua llegaron apagones, alza de alimentos y racionamientos; con ellos, las protestas.
+            </p>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <p>© 2025 Noticias CHANTA | Creado por RadarAbierto</p>
+    </footer>
+
+    <!-- ===== IMAGEN CABECERA DINÁMICA ===== -->
+    <script>
+        const imagenes = ["Image/CABECERA.png", "Image/CABECERA.png"];
+        let indice = 0;
+        const imagen = document.getElementById("imagen-cabecera");
+
+        setInterval(() => {
+            imagen.style.opacity = 0;
+            setTimeout(() => {
+                indice = (indice + 1) % imagenes.length;
+                imagen.src = imagenes[indice];
+                imagen.style.opacity = 1;
+            }, 1000);
+        }, 5000);
+    </script>
+
+    <!-- ===== JSON EMBEBIDO PARA BUSCADOR ===== -->
+    <script id="noticias-json" type="application/json">
+    [
+        {
+            "titulo": "Auroria en Sequía: Anatomía de una crisis",
+            "imagen": "AURORIA INFORME 1.png",
+            "enlace": "../Articulos/IndexAa.html"
+        }
+
+    ]
+    </script>
+
+    <!-- ===== SCRIPT BUSCADOR ===== -->
+    <script>
+        const buscador = document.getElementById("buscar");
+        const resultados = document.getElementById("resultados");
+        const dataJson = document.getElementById("noticias-json").textContent;
+        const noticias = JSON.parse(dataJson);
+
+        buscador.addEventListener("input", () => {
+            const texto = buscador.value.toLowerCase().trim();
+            resultados.innerHTML = "";
+
+            if (!texto) {
+                resultados.style.display = "none";
+                return;
+            }
+
+            const filtradas = noticias.filter(n => n.titulo.toLowerCase().includes(texto));
+
+            resultados.innerHTML = filtradas.length
+                ? filtradas.map(n => `
+                    <div class="resultado-item">
+                        <img src="${n.imagen}" alt="miniatura">
+                        <a href="${n.enlace}">${n.titulo}</a>
+                    </div>
+                `).join("")
+                : "<p class='sin-resultados'>No se encontraron noticias.</p>";
+
+            resultados.style.display = "block";
+        });
+
+        document.addEventListener("click", e => {
+            if (!buscador.contains(e.target) && !resultados.contains(e.target))
+                resultados.style.display = "none";
+        });
+
+        buscador.addEventListener("focus", () => {
+            if (resultados.innerHTML.trim()) resultados.style.display = "block";
+        });
+    </script>
+</body>
+</html>
+
+

@@ -1,0 +1,307 @@
+/* ========== RESET / BASE ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+body {
+  background-color: #f5f5f5;
+  color: #222;
+  line-height: 1.6;
+}
+
+/* ========== HEADER ========== */
+header {
+  background-color: #164c82;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  padding-top: 8px;
+}
+
+/*CABECERA LOGO UNIVERSIDAD*/
+.cabecera-animada {
+  display: flex;
+  justify-content: center;
+  background-color: #f5f5f5;
+  padding: 30px 0 10px;
+  margin: 20px auto;
+  max-width: 850px;
+  overflow: hidden;
+}
+
+.logouni {
+  width: 100%;
+  max-width: 850px;
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
+}
+
+
+/* ====== PRIMER DIV (buscador arriba, alineado a la derecha) ====== */
+.header-contenedor1 {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  padding: 0px 30px ;
+  margin-bottom: 20px;
+}
+
+/* ====== SEGUNDO DIV (centrado con el logo) ====== */
+.header-contenedor2 {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  max-width: 850px;
+  margin: 0 auto;
+  padding-bottom: 8px;
+}
+
+/* ====== LOGO ====== */
+.imglo {
+  width: 200px;
+  height: auto;
+}
+
+/* ====== BUSCADOR ====== */
+.buscador-header {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: -130px;
+}
+
+.buscador-header input {
+  width: 100%;
+  padding: 7px 12px;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  outline: none;
+}
+
+/* ====== RESULTADOS DEL BUSCADOR ====== */
+#resultados {
+  position: absolute;
+  top: 110%;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  color: #000;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  display: none;
+  z-index: 10;
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 8px;
+}
+
+.resultado-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.resultado-item:last-child {
+  border-bottom: none;
+}
+
+.resultado-item img {
+  width: 50px;
+  height: 35px;
+  object-fit: cover;
+  border-radius: 3px;
+}
+
+.resultado-item a {
+  color: #222;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.resultado-item a:hover {
+  text-decoration: underline;
+}
+
+.sin-resultados {
+  color: #555;
+  text-align: center;
+  padding: 10px;
+  font-size: 0.9rem;
+}
+
+/* ========== BARRA DE NAVEGACIÓN ========== */
+.barra-navegacion {
+  background-color: #0f355a;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.barra-navegacion ul {
+  display: flex;
+  list-style: none;
+  gap: 70px;
+  padding: 10px 0;
+}
+
+.barra-navegacion a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.2s ease;
+}
+
+.barra-navegacion a:hover {
+  color: #204f75;
+}
+
+
+/* ========== SECCIÓN CABECERA ========== */
+.logouni {
+  display: flex;
+  background-color: #fff;
+  padding: 30px 0 10px;
+  margin: 20px auto;
+  max-width: 850px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* ========== NOTICIA PRINCIPAL ========== */
+.noticia-principal {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #fff;
+  margin: 20px auto;
+  max-width: 850px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.noticia-principal img {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+}
+
+.noticia-principal .contenido {
+  padding: 20px;
+}
+
+.noticia-principal h1 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.noticia-principal p {
+  color: #222;
+  margin-bottom: 15px;
+}
+
+.noticia-principal a {
+  color: #222;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* ========== FOOTER ========== */
+footer {
+  text-align: center;
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  margin-top: 40px;
+  font-size: 0.9rem;
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+
+/* Tablets (pantallas medianas) */
+@media (max-width: 900px) {
+  .barra-navegacion ul {
+    gap: 40px;
+  }
+
+  .lista-noticias {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .noticia-principal h1 {
+    font-size: 1.5rem;
+  }
+
+  .imglo {
+    width: 160px;
+  }
+}
+
+/* Celulares (pantallas pequeñas) */
+@media (max-width: 600px) {
+  header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .buscador-header {
+    margin: 10px 0 0;
+    max-width: 100%;
+  }
+
+  .barra-navegacion ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 0;
+  }
+
+  .noticia-principal {
+    margin: 10px;
+  }
+
+  .lista-noticias {
+    grid-template-columns: 1fr;
+    margin: 10px;
+  }
+
+  .noticia {
+    padding: 10px;
+  }
+
+  .noticia h2 {
+    font-size: 1rem;
+  }
+
+  .noticia p {
+    font-size: 0.9rem;
+  }
+
+  .imglo {
+    width: 140px;
+  }
+}
+
+/* Pantallas grandes (monitores amplios) */
+@media (min-width: 1200px) {
+  .lista-noticias {
+    max-width: 850px;
+  }
+
+  .noticia-principal {
+    max-width: 850px;
+  }
+
+  .cabecera-animada {
+    max-width: 850px;
+  }
+
+}
