@@ -42,14 +42,13 @@ header {
   transition: opacity 1s ease-in-out;
 }
 
-
 /* ====== PRIMER DIV (buscador arriba, alineado a la derecha) ====== */
 .header-contenedor1 {
   display: flex;
   justify-content: flex-end;
   align-items: center;
   width: 100%;
-  padding: 0px 30px ;
+  padding: 0px 30px;
   margin-bottom: 20px;
 }
 
@@ -64,7 +63,6 @@ header {
   padding-bottom: 8px;
 }
 
-
 /* ====== LOGO ====== */
 .imglo {
   padding: 20px 0px 0px 0px;
@@ -78,13 +76,22 @@ header {
   display: flex;
   justify-content: center;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  width: 100%;
+  overflow-x: auto; /* 🔹 permite desplazamiento horizontal */
+  white-space: nowrap; /* 🔹 evita salto de línea */
+  -webkit-overflow-scrolling: touch;
+}
+
+.barra-navegacion::-webkit-scrollbar {
+  display: none; /* 🔹 oculta el scroll en móviles */
 }
 
 .barra-navegacion ul {
-  display: flex;
+  display: inline-flex; /* 🔹 mantiene horizontal */
   list-style: none;
   gap: 70px;
-  padding: 10px 0;
+  padding: 10px 20px;
+  margin: 0;
 }
 
 .barra-navegacion a {
@@ -93,12 +100,12 @@ header {
   font-weight: 500;
   font-size: 1rem;
   transition: color 0.2s ease;
+  white-space: nowrap; /* 🔹 evita que el texto se corte */
 }
 
 .barra-navegacion a:hover {
   color: #204f75;
 }
-
 
 /* ===== CONTENEDOR PRINCIPAL ===== */
 .contenedor-principal {
@@ -221,7 +228,7 @@ header {
   text-align: center;
   color: #fff;
   box-shadow: 0 6px 25px rgba(0,0,0,0.5);
-  overflow: hidden; /* importante para que el blur no se salga */
+  overflow: hidden;
 }
 
 /* 🔹 Capa superpuesta con desenfoque */
@@ -316,6 +323,15 @@ header {
   }
 }
 
+/* ===== Ajuste para alinear el iframe dentro del artículo ===== */
+.noticia-principal iframe {
+  display: block;
+  width: 100%;      
+  max-width: 100%;   
+  margin: 20px auto; 
+  border-radius: 6px;
+  border: none;
+}
 
 /* ===== FOOTER ===== */
 footer {
@@ -330,7 +346,7 @@ footer {
 
 /* ====== RESPONSIVO ====== */
 
-/* Tablets (pantallas medianas) */
+/* Tablets */
 @media (max-width: 900px) {
   .barra-navegacion ul {
     gap: 40px;
@@ -354,7 +370,7 @@ footer {
   }
 }
 
-/* Celulares (pantallas pequeñas) */
+/* Celulares */
 @media (max-width: 600px) {
   header {
     flex-direction: column;
@@ -375,11 +391,23 @@ footer {
     width: 140px;
   }
 
+  /* 🔹 Barra horizontal deslizable */
+  .barra-navegacion {
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
   .barra-navegacion ul {
-    flex-direction: column;
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: flex-start;
     align-items: center;
-    gap: 15px;
-    padding: 15px 0;
+    gap: 25px;
+    padding: 10px 15px;
+  }
+
+  .barra-navegacion a {
+    font-size: 0.95rem;
   }
 
   .contenedor-principal {
@@ -400,7 +428,7 @@ footer {
   }
 }
 
-/* Pantallas grandes (monitores amplios) */
+/* Pantallas grandes */
 @media (min-width: 1200px) {
   .contenedor-principal {
     max-width: 850px;
