@@ -24,7 +24,7 @@ header {
   padding-top: 8px;
 }
 
-/*CABECERA LOGO UNIVERSIDAD*/
+/* CABECERA LOGO UNIVERSIDAD */
 .cabecera-animada {
   display: flex;
   justify-content: center;
@@ -42,10 +42,10 @@ header {
   transition: opacity 1s ease-in-out;
 }
 
-/* ====== SEGUNDO DIV (logo alineado a la izquierda) ====== */
+/* ===== CONTENEDORES DEL HEADER ===== */
 .header-contenedor2 {
   display: flex;
-  justify-content: flex-start;
+  justify-content: flex-start; /* Logo a la izquierda */
   align-items: center;
   width: 100%;
   max-width: 850px;
@@ -53,7 +53,7 @@ header {
   padding-bottom: 8px;
 }
 
-/* ====== LOGO ====== */
+/* ===== LOGO ===== */
 .imglo {
   padding: 20px 0px 0px 0px;
   width: 200px;
@@ -71,10 +71,10 @@ header {
 
 .barra-navegacion ul {
   display: flex;
-  flex-wrap: wrap; /* permite 2 filas horizontales */
+  flex-wrap: wrap; /* Permite dos filas */
   justify-content: center;
   list-style: none;
-  gap: 40px 70px; /* espacio entre columnas y filas */
+  gap: 40px 70px;
   padding: 10px 0;
   margin: 0;
   width: 100%;
@@ -141,16 +141,15 @@ header {
   text-align: justify;
 }
 
-/* ===== IFRAME RESPONSIVO ===== */
+/* ===== IFRAME (VIDEO) ===== */
 .noticia-principal iframe {
   display: block;
   width: 100%;
-  max-width: 100%;
-  height: auto;
-  aspect-ratio: 16 / 9; /* mantiene proporción del video */
+  max-width: 560px;
+  height: 315px;
+  margin: 20px auto;
+  border-radius: 8px;
   border: none;
-  margin: 20px 0;
-  border-radius: 6px;
 }
 
 /* ===== TIRA LATERAL ===== */
@@ -174,6 +173,7 @@ header {
   margin-bottom: 15px;
   overflow: hidden;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
 }
 
 .cuadro-noticia:hover {
@@ -206,49 +206,53 @@ header {
 /* ===== CONTENEDOR DEL REPRODUCTOR ===== */
 .reproductor-contenedor {
   position: relative;
+  display: flex;
+  flex-direction: column;          
+  justify-content: space-between;  
+  align-items: center;
   background-size: cover;
   background-position: center;
-  border-radius: 12px;
+  border-radius: 15px;
   padding: 30px 35px;
-  width: 30%;
-  height: 40%;
-  max-width: 90%;
+  width: 80%;
+  max-width: 500px;               
+  height: 300px;                   
   text-align: center;
   color: #fff;
   box-shadow: 0 6px 25px rgba(0,0,0,0.5);
   overflow: hidden;
 }
 
-/* 🔹 Capa superpuesta con desenfoque */
+/* 🔹 Fondo difuminado */
 .reproductor-contenedor::before {
   content: "";
   position: absolute;
   inset: 0;
-  backdrop-filter: blur(0px);
-  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(1px);
+  background-color: rgba(0, 0, 0, 0.4);
   z-index: 0;
 }
 
-/* 🔹 Asegura que el contenido esté encima del blur */
-.reproductor-contenedor * {
+/* ===== TÍTULO ===== */
+.reproductor-contenedor h3 {
   position: relative;
   z-index: 1;
-}
-
-/* ===== TÍTULO DEL REPRODUCTOR ===== */
-.reproductor-contenedor h3 {
-  margin-bottom: 12px;
+  margin: 0;
   text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+  font-size: 1.4rem;
+  font-weight: 600;
 }
 
-/* ===== REPRODUCTOR DE AUDIO ===== */
+/* ===== AUDIO ===== */
 .reproductor-contenedor audio {
+  position: relative;
+  z-index: 1;
   width: 100%;
-  margin-top: 230px;
-  border-radius: 6px;
+  border-radius: 8px;
+  margin-top: 20px;
 }
 
-/* ===== BOTÓN DE CIERRE ===== */
+/* ===== BOTÓN CERRAR ===== */
 .cerrar-modal {
   position: absolute;
   top: 10px;
@@ -259,11 +263,40 @@ header {
   font-size: 1.8rem;
   cursor: pointer;
   transition: transform 0.2s ease;
+  z-index: 2;
 }
 
 .cerrar-modal:hover {
   transform: scale(1.2);
 }
+
+/* ===== RESPONSIVO ===== */
+@media (max-width: 900px) {
+  .reproductor-contenedor {
+    width: 90%;
+    max-width: 400px;
+    height: 250px;
+    padding: 25px 25px;
+  }
+
+  .reproductor-contenedor h3 {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .reproductor-contenedor {
+    width: 95%;
+    max-width: 350px;
+    height: auto;
+    padding: 25px 20px;
+  }
+
+  .reproductor-contenedor audio {
+    margin-top: 15px;
+  }
+}
+
 
 /* ===== FOOTER ===== */
 footer {
@@ -277,10 +310,10 @@ footer {
 
 /* ====== RESPONSIVO ====== */
 
-/* Tablets (pantallas medianas) */
+/* Tablets */
 @media (max-width: 900px) {
   .barra-navegacion ul {
-    gap: 30px 60px;
+    gap: 30px 40px;
   }
 
   .contenedor-principal {
@@ -301,16 +334,17 @@ footer {
   }
 }
 
-/* Celulares (pantallas pequeñas) */
+/* Celulares */
 @media (max-width: 600px) {
-  .imglo {
-    width: 140px;
+  .header-contenedor2 {
+    justify-content: flex-start;
+    padding-left: 15px;
   }
 
   .barra-navegacion ul {
     flex-wrap: wrap;
-    gap: 15px 30px;
-    padding: 15px 0;
+    justify-content: center;
+    gap: 20px 30px;
   }
 
   .contenedor-principal {
@@ -318,20 +352,20 @@ footer {
     padding: 15px;
   }
 
-  .noticia-principal h1 {
-    font-size: 1.4rem;
+  .noticia-principal iframe {
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
   }
 
-  .noticia-principal p {
-    font-size: 0.95rem;
-  }
-
-  .tira-lateral h2 {
-    font-size: 1.1rem;
+  .reproductor-contenedor {
+    width: 95%;
+    max-width: 350px;
+    padding: 25px 20px;
   }
 }
 
-/* Pantallas grandes (monitores amplios) */
+/* Pantallas grandes */
 @media (min-width: 1200px) {
   .contenedor-principal {
     max-width: 850px;
