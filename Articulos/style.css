@@ -42,17 +42,7 @@ header {
   transition: opacity 1s ease-in-out;
 }
 
-/* ====== PRIMER DIV (buscador arriba, alineado a la derecha) ====== */
-.header-contenedor1 {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  width: 100%;
-  padding: 0px 30px;
-  margin-bottom: 20px;
-}
-
-/* ====== SEGUNDO DIV (centrado con el logo) ====== */
+/* ====== SEGUNDO DIV (logo alineado a la izquierda) ====== */
 .header-contenedor2 {
   display: flex;
   justify-content: flex-start;
@@ -76,22 +66,20 @@ header {
   display: flex;
   justify-content: center;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  width: 100%;
-  overflow-x: auto; /* 🔹 permite desplazamiento horizontal */
-  white-space: nowrap; /* 🔹 evita salto de línea */
-  -webkit-overflow-scrolling: touch;
-}
-
-.barra-navegacion::-webkit-scrollbar {
-  display: none; /* 🔹 oculta el scroll en móviles */
+  padding: 0 10px;
 }
 
 .barra-navegacion ul {
-  display: inline-flex; /* 🔹 mantiene horizontal */
+  display: flex;
+  flex-wrap: wrap; /* permite 2 filas horizontales */
+  justify-content: center;
   list-style: none;
-  gap: 70px;
-  padding: 10px 20px;
+  gap: 40px 70px; /* espacio entre columnas y filas */
+  padding: 10px 0;
   margin: 0;
+  width: 100%;
+  max-width: 900px;
+  text-align: center;
 }
 
 .barra-navegacion a {
@@ -100,11 +88,11 @@ header {
   font-weight: 500;
   font-size: 1rem;
   transition: color 0.2s ease;
-  white-space: nowrap; /* 🔹 evita que el texto se corte */
+  white-space: nowrap;
 }
 
 .barra-navegacion a:hover {
-  color: #204f75;
+  color: #babfff;
 }
 
 /* ===== CONTENEDOR PRINCIPAL ===== */
@@ -153,6 +141,18 @@ header {
   text-align: justify;
 }
 
+/* ===== IFRAME RESPONSIVO ===== */
+.noticia-principal iframe {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9; /* mantiene proporción del video */
+  border: none;
+  margin: 20px 0;
+  border-radius: 6px;
+}
+
 /* ===== TIRA LATERAL ===== */
 .tira-lateral {
   flex: 0 0 30%;
@@ -186,18 +186,6 @@ header {
   height: 120px;
   object-fit: cover;
   display: block;
-}
-
-.cuadro-noticia a {
-  display: block;
-  padding: 10px;
-  color: #164c82;
-  font-weight: 500;
-  text-decoration: none;
-}
-
-.cuadro-noticia a:hover {
-  text-decoration: underline;
 }
 
 /* ===== MODAL DEL REPRODUCTOR ===== */
@@ -277,62 +265,6 @@ header {
   transform: scale(1.2);
 }
 
-/* ===== REPRODUCTOR DE VIDEO SIMPLE ===== */
-.reproductor-video {
-  background: #fff;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  text-align: center;
-  margin: 40px auto;
-  max-width: 650px;
-}
-
-.reproductor-video video {
-  width: 100%;
-  max-width: 600px;
-  border-radius: 8px;
-  outline: none;
-}
-
-.reproductor-video .descargar {
-  display: inline-block;
-  margin-top: 15px;
-  background-color: #164c82;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: 500;
-  transition: background-color 0.2s ease;
-}
-
-.reproductor-video .descargar:hover {
-  background-color: #0f355a;
-}
-
-/* Versión responsive */
-@media (max-width: 700px) {
-  .reproductor-video {
-    width: 90%;
-    padding: 15px;
-  }
-
-  .reproductor-video video {
-    max-width: 100%;
-  }
-}
-
-/* ===== Ajuste para alinear el iframe dentro del artículo ===== */
-.noticia-principal iframe {
-  display: block;
-  width: 100%;      
-  max-width: 100%;   
-  margin: 20px auto; 
-  border-radius: 6px;
-  border: none;
-}
-
 /* ===== FOOTER ===== */
 footer {
   text-align: center;
@@ -343,13 +275,12 @@ footer {
   font-size: 0.9rem;
 }
 
-
 /* ====== RESPONSIVO ====== */
 
-/* Tablets */
+/* Tablets (pantallas medianas) */
 @media (max-width: 900px) {
   .barra-navegacion ul {
-    gap: 40px;
+    gap: 30px 60px;
   }
 
   .contenedor-principal {
@@ -370,44 +301,16 @@ footer {
   }
 }
 
-/* Celulares */
+/* Celulares (pantallas pequeñas) */
 @media (max-width: 600px) {
-  header {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .header-contenedor1 {
-    justify-content: center;
-    padding: 10px;
-    margin-bottom: 10px;
-  }
-
-  .header-contenedor2 {
-    justify-content: center;
-  }
-
   .imglo {
     width: 140px;
   }
 
-  /* 🔹 Barra horizontal deslizable */
-  .barra-navegacion {
-    overflow-x: auto;
-    white-space: nowrap;
-  }
-
   .barra-navegacion ul {
-    display: inline-flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 25px;
-    padding: 10px 15px;
-  }
-
-  .barra-navegacion a {
-    font-size: 0.95rem;
+    flex-wrap: wrap;
+    gap: 15px 30px;
+    padding: 15px 0;
   }
 
   .contenedor-principal {
@@ -428,7 +331,7 @@ footer {
   }
 }
 
-/* Pantallas grandes */
+/* Pantallas grandes (monitores amplios) */
 @media (min-width: 1200px) {
   .contenedor-principal {
     max-width: 850px;
