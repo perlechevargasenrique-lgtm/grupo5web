@@ -42,18 +42,17 @@ header {
   transition: opacity 1s ease-in-out;
 }
 
-
-/* ====== PRIMER DIV (buscador arriba, alineado a la derecha) ====== */
+/* ====== PRIMER DIV (buscador) ====== */
 .header-contenedor1 {
   display: flex;
   justify-content: flex-end;
   align-items: center;
   width: 100%;
-  padding: 0px 30px ;
+  padding: 0px 30px;
   margin-bottom: 20px;
 }
 
-/* ====== SEGUNDO DIV (centrado con el logo) ====== */
+/* ====== SEGUNDO DIV (logo) ====== */
 .header-contenedor2 {
   display: flex;
   justify-content: flex-start;
@@ -143,16 +142,27 @@ header {
 /* ========== BARRA DE NAVEGACIÓN ========== */
 .barra-navegacion {
   background-color: #0f355a;
-  display: flex;
-  justify-content: center;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.barra-navegacion::-webkit-scrollbar {
+  display: none;
 }
 
 .barra-navegacion ul {
-  display: flex;
+  display: inline-flex;
   list-style: none;
   gap: 70px;
-  padding: 10px 0;
+  padding: 10px 20px;
+  white-space: nowrap;
+}
+
+.barra-navegacion li {
+  flex: 0 0 auto;
 }
 
 .barra-navegacion a {
@@ -166,7 +176,6 @@ header {
 .barra-navegacion a:hover {
   color: #204f75;
 }
-
 
 /* ========== SECCIÓN CABECERA ========== */
 .logouni {
@@ -226,10 +235,8 @@ footer {
 
 /* ========== RESPONSIVE DESIGN ========== */
 
-
 /* === Teléfonos pequeños (hasta 480px) === */
 @media (max-width: 480px) {
-
   body {
     font-size: 0.9rem;
   }
@@ -255,16 +262,32 @@ footer {
     width: 130px;
   }
 
-  /* Navegación */
+  /* ===== Navegación horizontal tipo carrusel ===== */
+  .barra-navegacion {
+    position: relative;
+  }
+
   .barra-navegacion ul {
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    padding: 15px 0;
+    gap: 25px;
+    padding: 10px 15px;
   }
 
   .barra-navegacion a {
     font-size: 0.95rem;
+    padding: 8px 0;
+    display: inline-block;
+  }
+
+  /* sombreado lateral indicando desplazamiento */
+  .barra-navegacion::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20px;
+    height: 100%;
+    pointer-events: none;
+    background: linear-gradient(to left, rgba(15,53,90,1), rgba(15,53,90,0));
   }
 
   /* Cabecera animada */
@@ -311,7 +334,6 @@ footer {
 
 /* === Tablets (481px a 900px) === */
 @media (min-width: 481px) and (max-width: 900px) {
-
   header {
     padding: 15px 0;
   }
@@ -354,7 +376,6 @@ footer {
 
 /* === Laptops medianas (901px a 1199px) === */
 @media (min-width: 901px) and (max-width: 1199px) {
-
   .barra-navegacion ul {
     gap: 50px;
   }
@@ -374,10 +395,7 @@ footer {
 
 /* === Pantallas grandes (1200px o más) === */
 @media (min-width: 8500px) {
-
-  .cabecera-animada,
-  .header-contenedor2,
-  .noticia-principal {
+  .cabecera-animada, .header-contenedor2, .noticia-principal {
     max-width: 850px;
   }
 
