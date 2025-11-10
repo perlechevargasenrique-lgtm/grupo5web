@@ -42,7 +42,7 @@ header {
   transition: opacity 1s ease-in-out;
 }
 
-/* ====== PRIMER DIV (buscador) ====== */
+/* ====== PRIMER DIV (buscador arriba, alineado a la derecha) ====== */
 .header-contenedor1 {
   display: flex;
   justify-content: flex-end;
@@ -52,7 +52,7 @@ header {
   margin-bottom: 20px;
 }
 
-/* ====== SEGUNDO DIV (logo) ====== */
+/* ====== SEGUNDO DIV (centrado con el logo) ====== */
 .header-contenedor2 {
   display: flex;
   justify-content: flex-start;
@@ -142,27 +142,18 @@ header {
 /* ========== BARRA DE NAVEGACIÓN ========== */
 .barra-navegacion {
   background-color: #0f355a;
+  display: flex;
+  justify-content: center; /* ✅ centrada en pantallas grandes */
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   width: 100%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-}
-
-.barra-navegacion::-webkit-scrollbar {
-  display: none;
+  overflow: hidden; /* sin scroll en pantallas grandes */
 }
 
 .barra-navegacion ul {
-  display: inline-flex;
+  display: flex;
   list-style: none;
   gap: 70px;
-  padding: 10px 20px;
-  white-space: nowrap;
-}
-
-.barra-navegacion li {
-  flex: 0 0 auto;
+  padding: 10px 0;
 }
 
 .barra-navegacion a {
@@ -262,23 +253,38 @@ footer {
     width: 130px;
   }
 
-  /* ===== Navegación horizontal tipo carrusel ===== */
+  /* ✅ Barra horizontal deslizable */
   .barra-navegacion {
+    justify-content: flex-start;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
     position: relative;
   }
 
+  .barra-navegacion::-webkit-scrollbar {
+    display: none;
+  }
+
   .barra-navegacion ul {
+    display: inline-flex;
+    flex-wrap: nowrap;
     gap: 25px;
     padding: 10px 15px;
+    white-space: nowrap;
+    width: max-content;
+  }
+
+  .barra-navegacion li {
+    flex: 0 0 auto;
   }
 
   .barra-navegacion a {
     font-size: 0.95rem;
-    padding: 8px 0;
     display: inline-block;
   }
 
-  /* sombreado lateral indicando desplazamiento */
+  /* efecto visual del borde derecho */
   .barra-navegacion::after {
     content: "";
     position: absolute;
@@ -396,7 +402,9 @@ footer {
 
 /* === Pantallas grandes (1200px o más) === */
 @media (min-width: 8500px) {
-  .cabecera-animada, .header-contenedor2, .noticia-principal {
+  .cabecera-animada,
+  .header-contenedor2,
+  .noticia-principal {
     max-width: 850px;
   }
 
@@ -412,4 +420,3 @@ footer {
     font-size: 1.1rem;
   }
 }
-
