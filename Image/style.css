@@ -168,50 +168,20 @@ footer {
 
 /* ===== RESPONSIVO ===== */
 
-/* Tablets (max-width: 900px) */
+/* Tablets y celulares (0 - 1000px) */
 @media (max-width: 1000px) {
   /* Cabecera logo */
   .imglo {
     width: 160px;
   }
 
-  /* Barra de navegación */
-  .barra-navegacion ul {
-    gap: 30px 40px;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  /* Contenedor principal */
-  .contenedor-principal {
-    flex-direction: column;
-    max-width: 95%;
-    padding: 20px;
-    margin: 20px auto;
-  }
-
-  /* Div lateral en artículos (si existiera) */
-  .texto-lateral {
-    margin-top: 20px;
-    width: 100%;
-  }
-
-  /* Ajuste imagen + parrafo */
-  .imagen-parrafo {
-    flex-direction: column;
-    align-items: center;
-  }
-}
-
-/* Celulares (max-width: 600px) */
-@media (max-width: 900px) {
-  /* Cabecera */
+  /* Cabecera general */
   .header-contenedor2 {
     justify-content: flex-start;
     padding-left: 15px;
   }
 
-  /* Barra de navegación: se envuelven en 2 filas horizontales */
+  /* Barra de navegación: 2 filas horizontales */
   .barra-navegacion ul {
     flex-wrap: wrap;
     justify-content: center;
@@ -224,8 +194,10 @@ footer {
 
   /* Contenedor principal */
   .contenedor-principal {
-    margin: 20px 10px;
-    padding: 15px;
+    flex-direction: column;
+    max-width: 95%;
+    padding: 15px 20px;
+    margin: 20px auto;
   }
 
   /* Imagen dentro del artículo */
@@ -240,7 +212,7 @@ footer {
     margin-top: 15px;
   }
 
-  /* Ajuste imagen + parrafo */
+  /* Ajuste imagen + párrafo */
   .imagen-parrafo {
     flex-direction: column;
     align-items: center;
