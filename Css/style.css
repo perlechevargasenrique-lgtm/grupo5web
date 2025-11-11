@@ -478,3 +478,23 @@ footer {
   }
 }
 
+/* Responsivo para pantallas pequeñas: filas de 2 */
+@media (max-width: 700px) {
+  .equipo {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .miembro {
+    width: calc(50% - 10px); /* Dos tarjetas por fila con espacio */
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 450px) {
+  .miembro {
+    width: 100%; /* En pantallas muy pequeñas, una tarjeta por fila */
+  }
+}
+
