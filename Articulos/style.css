@@ -152,6 +152,11 @@ header {
   text-align: justify;
 }
 
+.noticia-principal img {
+  max-width: 350px;
+}
+
+
 /* ===== IFRAME (VIDEO) ===== */
 .noticia-principal iframe {
   display: block;
@@ -386,4 +391,5 @@ footer {
     max-width: 850px;
   }
 }
+
 
