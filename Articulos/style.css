@@ -141,6 +141,17 @@ header {
   text-align: justify;
 }
 
+.noticia-principal ul {
+  margin-left: 30px; 
+  margin-bottom: 15px;
+  list-style-type: disc;
+}
+
+.noticia-principal ul li {
+  margin-bottom: 8px; 
+  text-align: justify;
+}
+
 /* ===== IFRAME (VIDEO) ===== */
 .noticia-principal iframe {
   display: block;
@@ -375,3 +386,4 @@ footer {
     max-width: 850px;
   }
 }
+
