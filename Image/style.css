@@ -149,12 +149,19 @@ header {
 ul {
   margin-left: 30px;
   margin-bottom: 15px;
-  list-style-type: disc; /* Default: puntos */
+  list-style-type: disc;
 }
 
 ul.rayas {
-  list-style-type: "- "; /* Solo para listas específicas con clase 'rayas' */
+  list-style-type: "- "; 
 }
+
+/* Listas ordenadas con sangría como listas normales */
+ol {
+  margin-left: 30px; 
+  margin-bottom: 15px; 
+}
+
 
 /* ===== FOOTER ===== */
 footer {
