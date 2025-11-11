@@ -169,7 +169,7 @@ footer {
 /* ===== RESPONSIVO ===== */
 
 /* Tablets (max-width: 900px) */
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
   /* Cabecera logo */
   .imglo {
     width: 160px;
@@ -204,7 +204,7 @@ footer {
 }
 
 /* Celulares (max-width: 600px) */
-@media (max-width: 600px) {
+@media (max-width: 900px) {
   /* Cabecera */
   .header-contenedor2 {
     justify-content: flex-start;
